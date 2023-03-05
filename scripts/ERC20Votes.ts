@@ -16,10 +16,10 @@ async function main(){
     const mintTx = await contract.mint(account1.address, MINT_VALUE)
     const mintTxReceipt = await mintTx.wait();
     console.log(`Tokens minted for ${account1.address} at block ${mintTxReceipt.blockNumber}`);
-    //check the voting power
     const tokenBalanceAccount1 = await contract.balanceOf(account1.address);
-    console.log(`Account 1 has a balance of ${ethers.utils.formatEther(tokenBalanceAccount1) } Vote Tokens` )
-}
+    console.log(`Account 1 has a balance of ${ethers.utils.formatEther(tokenBalanceAccount1)} Vote Tokens` );
+
+}      //check the voting power
 
 main().catch((error) => {
     console.error(error);
