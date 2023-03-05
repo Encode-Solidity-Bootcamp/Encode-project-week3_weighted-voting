@@ -4,7 +4,7 @@ import { MyToken, MyToken__factory } from "../typechain-types";
 const MINT_VALUE = ethers.utils.parseEther("10")
 
 async function main(){
-     //Deploy the contract
+    //Deploy the contract
     const [deployer, account1, account2] = await ethers.getSigners();
     const contractFactory = new MyToken__factory(deployer);
     const contract: MyToken = await contractFactory.deploy();
