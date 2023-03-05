@@ -1,5 +1,8 @@
 async function main(){
-    console.log("it works");
+    
+    //Deploy the contract
+    //Mint some tokens
+    //check the voting power
 }
 
 main().catch((error) => {
