@@ -18,7 +18,7 @@ async function main(){
     console.log(`Tokens minted for ${account1.address} at block ${mintTxReceipt.blockNumber}`);
     //check the voting power
     const tokenBalanceAccount1 = await contract.balanceOf(account1.address);
-    console.log(`Account 1 has a balance of ${tokenBalanceAccount1}`)
+    console.log(`Account 1 has a balance of ${ethers.utils.formatEther(tokenBalanceAccount1) }`)
 }
 
 main().catch((error) => {
