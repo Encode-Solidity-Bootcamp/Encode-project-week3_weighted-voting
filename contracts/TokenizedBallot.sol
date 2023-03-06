@@ -38,6 +38,7 @@ contract Ballot {
         return tokenContract.getPastVotes(account, targetBlockNumber) - votingPowerSpent[account];
     }
 
+
     function winningProposal() public view
             returns (uint winningProposal_)
     {
