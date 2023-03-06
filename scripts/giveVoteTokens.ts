@@ -1,12 +1,14 @@
 import { ethers } from "ethers";
 import * as dotenv from "dotenv";
-import { Ballot__factory, MyToken__factory } from "../typechain-types";
+import {MyToken, MyToken__factory } from "../typechain-types";
 dotenv.config();
 
 async function main() {
 //receive addresss of voters as parameter from CLI
 // const args = process.argv;
 // const addresses = args.slice(2);
+
+//tokenAddress = 0x261F475a207363aCdB9D018299f0678eFc77837E
 const tokenAddress = process.argv[2];
 const address = process.argv[3];
 const tokenAmount = process.argv[4];
@@ -36,6 +38,7 @@ const transactionResponse = await contractInstance.transfer(address, tokenAmount
 console.log(`Transferring tokens to ${address} `);
 const txReceipt = await transactionResponse.wait(1);
 console.log(txReceipt);
+console.log(`transfer successful`)
 
 }
 
