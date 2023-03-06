@@ -12,7 +12,7 @@ async function main() {
     const provider = new ethers.providers.InfuraProvider(
         "goerli",
         process.env.INFURA_API_KEY
-        );
+        ); 
 
     //get your signer from .env 
     const privateKey = process.env.PRIVATE_KEY;
