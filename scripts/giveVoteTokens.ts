@@ -11,7 +11,8 @@ async function main() {
 //tokenAddress = 0x261F475a207363aCdB9D018299f0678eFc77837E
 const tokenAddress = process.argv[2];
 const address = process.argv[3];
-const tokenAmount = process.argv[4];
+// const tokenAmount = process.argv[4];
+const tokenAmount = ethers.utils.parseEther(process.argv[4])
 
 //get a provider
 const provider = new ethers.providers.InfuraProvider(
