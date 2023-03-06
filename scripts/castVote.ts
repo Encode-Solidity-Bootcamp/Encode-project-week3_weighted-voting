@@ -50,6 +50,7 @@ async function main() {
     console.log(txReceipt);
 
     console.log(`${signer.address} has just voted`);
+    
 }
 
 

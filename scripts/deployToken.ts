@@ -23,16 +23,15 @@ async function main() {
   const balance = await signer.getBalance();
   console.log(`Wallet balance: ${balance} Wei`);
   
-  console.log("Deploying Token contract");
- 
+
  
   const tokenContractFactory = new MyToken__factory(signer);
-  console.log("Deploying contract ..."); 
+  console.log("Deploying token contract ..."); 
   const tokenContract = await tokenContractFactory.deploy();
   const tokenContractReceipt = await tokenContract.deployTransaction.wait();
   
     console.log(
-        `The Ballot contract was deployed at the address ${tokenContract.address}`
+        `The token contract was deployed at the address ${tokenContract.address}`
     );
     console.log({tokenContractReceipt});
 
