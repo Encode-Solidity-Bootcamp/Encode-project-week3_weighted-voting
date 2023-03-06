@@ -48,8 +48,13 @@ async function main() {
     // Cast Vote
 
     // Check voting Power
+    
 
     // Query result from Proposals
+
+    const proposalResult = await contractDeploy.winningProposal();
+    const winningName = await contractDeploy.winnerName();
+    console.log(`the winning proposal is ${winningName}, with ${proposalResult} votes`)
 }
 main().catch((error) => {
     console.error(error);
