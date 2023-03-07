@@ -6,6 +6,7 @@ dotenv.config();
 async function main() {
     //receive address of ballot and proposal index from CLI
     const ballotAddress = process.argv[2];
+    //const tokenAddress = process.argv[2];
     const address = process.argv[3];
 
     //get a provider
@@ -26,13 +27,21 @@ async function main() {
     const signer = wallet.connect(provider);
     console.log(`Connected to the wallet ${wallet.address}`)
 
-    //create a contract instance (attach)
+    // //create a contract instance (attach)
     const ballotFactory =  new Ballot__factory(signer);
     const contractInstance = ballotFactory.attach(ballotAddress)
 
+     //create a contract instance (attach)
+    //  const tokenFactory =  new MyToken__factory(signer);
+    //  const tokenContractInstance = tokenFactory.attach(tokenAddress)
+ 
+
     //interact
     const votingPower = await contractInstance.votingPower(address);
-    console.log(`This address: ${address} has voting power of ${votingPower} `);
+    console.log(`This address: ${address} has voting power of ${ethers.utils.formatEther(votingPower)} units `);
+
+    // let votingPower = await tokenContractInstance.getVotes(address);
+    // console.log(ethers.utils.formatEther(votingPower));
     
 
 }

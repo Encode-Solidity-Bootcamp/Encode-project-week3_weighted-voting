@@ -39,7 +39,9 @@ const transactionResponse = await contractInstance.transfer(address, tokenAmount
 console.log(`Transferring tokens to ${address} `);
 const txReceipt = await transactionResponse.wait(1);
 console.log(txReceipt);
-console.log(`transfer successful`)
+const remainingBalance = await contractInstance.balanceOf(signer.address)
+console.log(`transfer successful and remaining balance is ${ethers.utils.formatEther(remainingBalance)}`)
+
 
 }
 

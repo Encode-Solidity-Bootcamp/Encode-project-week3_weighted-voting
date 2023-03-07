@@ -30,6 +30,7 @@ contract Ballot {
     }
 
     function vote(uint proposal, uint256 amount) external {
+        require(amount == 1, "You can only vote with one token");
         require(votingPower(msg.sender) >= amount);
         votingPowerSpent[msg.sender] += amount;
         proposals[proposal].voteCount += amount;
