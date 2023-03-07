@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import { Ballot__factory } from "../typechain-types";
 dotenv.config();
 
+//ballot address = 0xCd1f4c54c728F0AF2B6cC757a8b397Ae516BE93b
 async function main() {
     //receive address of ballot and proposal index from CLI
     const ballotAddress = process.argv[2];

@@ -14,6 +14,8 @@ async function main() {
         process.env.INFURA_API_KEY
         ); 
 
+        //8612873
+
     //get your signer from .env 
     const privateKey = process.env.PRIVATE_KEY;
 

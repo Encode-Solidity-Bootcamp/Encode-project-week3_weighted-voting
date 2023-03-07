@@ -2,6 +2,8 @@
 import { ethers } from "ethers";
 import * as dotenv from "dotenv";
 import { Ballot__factory } from "../typechain-types";
+
+//yarn run ts-node --files scripts/deployBallot.ts "[david, boma, leo]" "0x261F475a207363aCdB9D018299f0678eFc77837E" "8612873"
 dotenv.config();
 
 function convertStringArrayToBytes32(array: string[]) {
@@ -15,13 +17,20 @@ function convertStringArrayToBytes32(array: string[]) {
 
 async function main() {
 
+//   const args = process.argv.slice(2);
+//   const proposals = JSON.parse(args[0]);
+//   const tokenContract = args[1]; 
+//   const targetBlockNumber = parseInt(args[2]);
   
-  const proposals = process.argv.slice(2, -2);
-  const tokenContract = process.argv[process.argv.length - 2];
-  const targetBlockNumber = process.argv[process.argv.length - 1];
+//   const proposals = process.argv.slice(2, -2);
+//   const tokenContract = process.argv[process.argv.length - 2];
+//   const targetBlockNumber = process.argv[process.argv.length - 1];
 
-  //const args = process.argv;
-  //const proposals = args.slice(2);
+  const args = process.argv.slice(2);
+  const proposals = args[0].split(',');
+  const tokenContract = args[1];
+  const targetBlockNumber = args[2];
+  
   if(proposals.length <= 0) throw new Error("Missing parameters: proposals");
 
   const provider = new ethers.providers.InfuraProvider(
@@ -41,12 +50,12 @@ async function main() {
   console.log(`Wallet balance: ${balance} Wei`);
   
   console.log("Deploying Ballot contract");
-  console.log("Proposals: ");
-  proposals.forEach((element, index) => {
-    console.log(`Proposal No. ${index + 1}: ${element}`);
-  });
-  const ballotContractFactory = new Ballot__factory(signer);
-  console.log("Deploying contract ..."); 
+//   console.log("Proposals: ");
+//   proposals.forEach((element, index) => {
+//     console.log(`Proposal No. ${index + 1}: ${element}`);
+//   });
+   const ballotContractFactory = new Ballot__factory(signer);
+  //console.log("Deploying contract ..."); 
   const ballotContract = await ballotContractFactory.deploy(
     convertStringArrayToBytes32(proposals), tokenContract, targetBlockNumber
     );
